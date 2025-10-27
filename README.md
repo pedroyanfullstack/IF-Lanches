@@ -1,6 +1,6 @@
 # IF-Lanches
 
-## 🧩 Requisitos Funcionais
+## Requisitos Funcionais
 
 | **Código** | **Descrição** |
 |-------------|----------------|
@@ -35,7 +35,7 @@
 
 ---
 
-## ⚙️ Requisitos Não Funcionais
+## Requisitos Não Funcionais
 
 | **Código** | **Categoria** | **Descrição** |
 |-------------|----------------|----------------|
