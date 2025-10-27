@@ -1,5 +1,7 @@
 # IF-Lanches
 
+<img src="img/Logo if lanches.png" alt="logotipo">
+
 ## Requisitos Funcionais
 
 | **Código** | **Descrição** |
