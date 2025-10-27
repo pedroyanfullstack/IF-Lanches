@@ -6,11 +6,11 @@ São as funções que o sistema deve obrigatoriamente executar.
 
 🟢 01 – Tela de Login
 
-|01.1 – Permitir autenticação por login e senha.|
+| 01.1 – Permitir autenticação por login e senha. |
 
-|01.2 – Armazenar e exibir id, nome de usuário e CPF.|
+| 01.2 – Armazenar e exibir id, nome de usuário e CPF. |
 
-|01.3 – Validar credenciais antes de conceder acesso.|
+| 01.3 – Validar credenciais antes de conceder acesso. |
 
 
 🟢 02 – CRUD de Produto
