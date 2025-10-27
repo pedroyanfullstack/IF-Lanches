@@ -1,6 +1,6 @@
 # IF-Lanches
 
-<img src="img/Logo if lanches.png" alt="logotipo">
+<img src="img/Logoiflanches.png" alt="logotipo">
 
 ## Requisitos Funcionais
 
