@@ -243,7 +243,7 @@ form a{
 #container-login img {
   width: 200px;
   height: auto;
-  margin-left: -3%;
+  margin-left: 9%;
   margin-bottom: 300PX;
 }
 
@@ -278,7 +278,7 @@ label {
 }
 
 input {
-  width: 90%; /* tamanho fixo */
+  width: 97%; /* tamanho fixo */
   padding: 8px 12px;
   border: 2px solid var(--marron);
   border-radius: 8px;
