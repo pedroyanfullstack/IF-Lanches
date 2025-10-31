@@ -226,7 +226,7 @@ form a{
 }
 }
 
-@media (max-width: 347px) {
+@media (max-width: 385px) {
   #container-login {
   position: absolute;
   top: 50%;
