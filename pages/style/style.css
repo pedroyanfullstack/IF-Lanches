@@ -225,3 +225,76 @@ form a{
     width: 27%;
 }
 }
+
+@media (max-width: 347px) {
+  #container-login {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  border-radius: 20px;
+  padding: 40px;
+}
+
+#container-login img {
+  width: 200px;
+  height: auto;
+  margin-left: -3%;
+  margin-bottom: 300PX;
+}
+
+.login-content {
+  margin-left: -205px;
+  margin-top: 300px;
+  width: 2000px;
+}
+
+#container-login h1 {
+  color: var(--marron);
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  font-family: "Ubuntu", sans-serif;
+  font-style: normal;
+}
+
+/* ===== Estilos dos Inputs ===== */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+label {
+  color: var(--marron);
+  font-weight: bold;
+  margin-bottom: 4px;
+  font-family: "Ubuntu", sans-serif;
+  font-style: normal;
+}
+
+input {
+  width: 90%; /* tamanho fixo */
+  padding: 8px 12px;
+  border: 2px solid var(--marron);
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: rgb(109, 53, 0);
+  color: var(--fundo);
+}
+
+input::placeholder {
+  color: var(--fundo);
+}
+
+form a{
+    color: var(--marron);
+    font-weight: bold;
+    margin-top: 10%;
+    width: 27%;
+}
+}
