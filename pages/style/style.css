@@ -1,5 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
 
+html, body {
+  height: 100%;
+  overflow: hidden; /* impede rolagem */
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -89,22 +94,12 @@ input::placeholder {
   opacity: 0.8;
 }
 
-
-input:focus {
-  border-color: var(--laranja);
-  box-shadow: 0 0 5px var(--laranja);
-}
-
 form a {
   color: var(--marron);
   font-weight: bold;
   margin-top: 20px;
   
   transition: 0.2s;
-}
-
-form a:hover {
-  color: var(--laranja);
 }
 
 /* ===== RESPONSIVIDADE ===== */
