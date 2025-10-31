@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/pages/style/gerenciar.css" />
+    <title>IF - Lanches</title>
+  </head>
+  <body>
+    <header class="navbar">
+      <!-- ===== LOGO ===== -->
+      <div class="navbar-left">
+        <img
+          src="/img/Logoiflanches-removebg-preview.png"
+          alt="Logo IF Lanches"
+          class="logo"
+        />
+      </div>
+
+      <!-- ===== CENTRO (LINKS) ===== -->
+      <nav class="navbar-center">
+        <a href="home.html">INÍCIO</a>
+        <a href="#">CARDÁPIO</a>
+        <a href="gerenciar.html">GERENCIAR</a>
+      </nav>
+
+      <!-- ===== DIREITA (SALDO E PERFIL) ===== -->
+      <div class="navbar-right">
+        <span class="saldo">R$ 0,00</span>
+        <img
+          src="/img/perfil-usuario.jpg"
+          alt="Foto de Perfil"
+          class="perfil"
+          onerror="this.onerror=null; this.src='https://cdn-icons-png.flaticon.com/512/847/847969.png';"
+        />
+      </div>
+
+      <!-- ===== BOTÃO MENU HAMBÚRGUER ===== -->
+      <div class="menu-btn" id="menu-btn">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </header>
+
+    <!-- ===== MENU MOBILE ===== -->
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="home.html">INÍCIO</a>
+      <a href="#">CARDÁPIO</a>
+      <a href="gerenciar.html">GERENCIAR</a>
+    </div>
+
+    <main>
+      <h1 id="h1-gere">CRIAR OU EDITAR PRODUTOS</h1>
+      <h2 id="h2-gere">Lista de produtos cadastrados:</h2>
+
+      <h3 class="h3-secti">Salgados</h3>
+      <section class="produtos-grid">
+        <div class="card">
+          <div class="card-imagem">
+            <img src="/img/Whopper-Rodeio.png" alt="Produto 1" />
+          </div>
+          <h3>Mega Stacker Rodeio 2.0</h3>
+        </div>
+
+        <div class="card">
+          <div class="card-imagem">
+            <img src="/img/Whopper-Rodeio.png" alt="Produto 2" />
+          </div>
+          <h3>Mega Stacker Rodeio 3.0</h3>
+        </div>
+
+        <div class="card">
+          <div class="card-imagem">
+            <img src="/img/Whopper-Rodeio.png" alt="Produto 3" />
+          </div>
+          <h3>Whopper Rodeio</h3>
+        </div>
+
+        <div class="card">
+          <div class="card-imagem">
+            <img src="/img/Whopper-Rodeio.png" alt="Produto 4" />
+          </div>
+          <h3>Whopper Barbecue Bacon</h3>
+        </div>
+
+        <div class="card">
+          <div class="card-imagem">
+            <img src="/img/Whopper-Rodeio.png" alt="Produto 5" />
+          </div>
+          <h3>Whopper Duplo</h3>
+        </div>
+
+        <div class="card">
+          <div class="card-imagem">
+            <img src="/img/Whopper-Rodeio.png" alt="Produto 6" />
+          </div>
+          <h3>Whopper Furioso</h3>
+        </div>
+
+        <div class="card">
+          <div class="card-imagem">
+            <img src="/img/Whopper-Rodeio.png" alt="Produto 7" />
+          </div>
+          <h3>Mega Stacker Cheddar 2.0</h3>
+        </div>
+
+        <div class="card">
+          <div class="card-imagem">
+            <img src="/img/Whopper-Rodeio.png" alt="Produto 8" />
+          </div>
+          <h3>Mega Stacker 2.0</h3>
+        </div>
+      </section>
+
+      <h3 class="h3-secti">Bebidas</h3>
+      <section class="produtos-grid">
+        <div class="card">
+          <div class="card-imagem">
+            <img src="/img/guarana.png" alt="Produto 1" />
+          </div>
+          <h3>Mega Stacker Rodeio 2.0</h3>
+        </div>
+
+        <div class="card">
+          <div class="card-imagem">
+            <img src="/img/guarana.png" alt="Produto 2" />
+          </div>
+          <h3>Mega Stacker Rodeio 3.0</h3>
+        </div>
+
+        <div class="card">
+          <div class="card-imagem">
+            <img src="/img/guarana.png" alt="Produto 3" />
+          </div>
+          <h3>Whopper Rodeio</h3>
+        </div>
+
+        <div class="card">
+          <div class="card-imagem">
+            <img src="/img/guarana.png" alt="Produto 4" />
+          </div>
+          <h3>Whopper Barbecue Bacon</h3>
+        </div>
+
+        <div class="card">
+          <div class="card-imagem">
+            <img src="/img/guarana.png" alt="Produto 5" />
+          </div>
+          <h3>Whopper Duplo</h3>
+        </div>
+
+        <div class="card">
+          <div class="card-imagem">
+            <img src="/img/guarana.png" alt="Produto 6" />
+          </div>
+          <h3>Whopper Furioso</h3>
+        </div>
+
+        <div class="card">
+          <div class="card-imagem">
+            <img src="/img/guarana.png" alt="Produto 7" />
+          </div>
+          <h3>Mega Stacker Cheddar 2.0</h3>
+        </div>
+
+        <div class="card">
+          <div class="card-imagem">
+            <img src="/img/guarana.png" alt="Produto 8" />
+          </div>
+          <h3>Mega Stacker 2.0</h3>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const menuBtn = document.getElementById("menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      menuBtn.addEventListener("click", () => {
+        menuBtn.classList.toggle("active");
+        mobileMenu.classList.toggle("open");
+      });
+    </script>
+  </body>
+</html>

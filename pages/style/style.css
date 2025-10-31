@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Michroma&family=Momo+Trust+Display&family=Oswald:wght@200..700&family=Story+Script&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
 html, body {
   height: 100%;
@@ -13,7 +14,7 @@ html, body {
 
 :root {
   --fundo: #f5ebdc;
-  --laranja: orange;
+  --laranja: #ffaa00;
   --marron: #502314;
 }
 
@@ -134,5 +135,144 @@ form a {
 
   input {
     font-size: 14px;
+  }
+}
+
+/* From Uiverse.io by adamgiebl */ 
+button {
+  background: var(--marron);
+  font-family: inherit;
+  padding: 0.6em 1.3em;
+  font-weight: 900;
+  font-size: 18px;
+  color: var(--fundo);
+  border: none;
+  border-radius: 0.4em;
+  box-shadow: 0.1em 0.1em;
+  cursor: pointer;
+}
+
+button:active {
+  transform: translate(0.05em, 0.05em);
+  box-shadow: 0.05em 0.05em;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+  width: 100%;
+  height: 90px;
+  background-color: var(--laranja);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+/* ===== LADO ESQUERDO (LOGO) ===== */
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-left .logo {
+  height: 75px;
+  width: auto;
+}
+
+/* ===== LADO DIREITO (SALDO + PERFIL) ===== */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.navbar-right .saldo {
+  font-weight: 600;
+  color: var(--marron);
+  font-size: 1.5rem;
+}
+
+.navbar-right .perfil {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--marron);
+  cursor: pointer;
+}
+
+/* ===== CENTRO ===== */
+
+.navbar-center {
+  display: flex;
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center;     /* Centraliza verticalmente */
+  gap: 30px;               /* Espaço entre os links */
+  flex: 1;                 /* Faz ocupar o espaço central da navbar */
+}
+
+.navbar-center a {
+  text-decoration: none;
+  color: var(--marron);
+  font-family: "Archivo Black", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.5rem;
+  transition: 0.2s;
+}
+
+
+/* ===== ÍCONE MENU SANDUÍCHE (SOMENTE NO MOBILE) ===== */
+.menu-btn {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+  width: 30px;
+  height: 25px;
+}
+
+.menu-btn span {
+  height: 3px;
+  background-color: var(--marron);
+  border-radius: 2px;
+  margin: 3px 0;
+  width: 100%;
+  transition: 0.3s;
+}
+
+/* ===== RESPONSIVIDADE ===== */
+@media (max-width: 768px) {
+  .navbar-right {
+    display: none; /* Esconde saldo e perfil */
+  }
+
+  .menu-btn {
+    display: flex; /* Mostra o ícone sanduíche */
+  }
+
+  .navbar-left .logo {
+    height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    height: 55px;
+    padding: 0 15px;
+  }
+
+  .navbar-left .logo {
+    height: 35px;
+  }
+
+  .menu-btn {
+    width: 25px;
+    height: 20px;
   }
 }

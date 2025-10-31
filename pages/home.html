@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/pages/style/home.css" />
+    <title>IF - Lanches</title>
+  </head>
+  <body>
+    <header class="navbar">
+      <!-- ===== LOGO ===== -->
+      <div class="navbar-left">
+        <img
+          src="/img/Logoiflanches-removebg-preview.png"
+          alt="Logo IF Lanches"
+          class="logo"
+        />
+      </div>
+
+      <!-- ===== CENTRO (LINKS) ===== -->
+      <nav class="navbar-center">
+        <a href="home.html">INÍCIO</a>
+        <a href="#">CARDÁPIO</a>
+        <a href="gerenciar.html">GERENCIAR</a>
+      </nav>
+
+      <!-- ===== DIREITA (SALDO E PERFIL) ===== -->
+      <div class="navbar-right">
+        <span class="saldo">R$ 0,00</span>
+        <img
+          src="/img/perfil-usuario.jpg"
+          alt="Foto de Perfil"
+          class="perfil"
+          onerror="this.onerror=null; this.src='https://cdn-icons-png.flaticon.com/512/847/847969.png';"
+        />
+      </div>
+
+      <!-- ===== BOTÃO MENU HAMBÚRGUER ===== -->
+      <div class="menu-btn" id="menu-btn">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </header>
+
+
+    <!-- ===== MENU MOBILE ===== -->
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="home.html">INÍCIO</a>
+      <a href="#">CARDÁPIO</a>
+      <a href="gerenciar.html">GERENCIAR</a>
+    </div>
+
+    <main>
+      <div id="container-login">
+        <!-- Conteúdo principal -->
+      </div>
+    </main>
+
+    <script>
+      const menuBtn = document.getElementById("menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      menuBtn.addEventListener("click", () => {
+        menuBtn.classList.toggle("active");
+        mobileMenu.classList.toggle("open");
+      });
+    </script>
+  </body>
+</html>
