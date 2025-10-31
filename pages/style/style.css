@@ -1,13 +1,227 @@
-*{
-    padding: 0%;
-    margin: 0%;
-    box-sizing: border-box;
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Michroma&family=Momo+Trust+Display&family=Oswald:wght@200..700&family=Story+Script&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+
+* {
+  padding: 0%;
+  margin: 0%;
+  box-sizing: border-box;
 }
 
-:root{
-    --fundo: #f5ebdc;
+:root {
+  --fundo: #f5ebdc;
+  --laranja: orange;
+  --marron: #502314;
 }
 
-body{
-    background-color: var(--fundo);
+body {
+  background-color: var(--fundo);
+}
+
+#container-login {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  border-radius: 20px;
+  padding: 40px;
+}
+
+#container-login img {
+  width: 280px;
+  height: auto;
+  margin-left: 20%;
+}
+
+.login-content {
+  margin-left: 40px;
+  width: 100%;
+}
+
+#container-login h1 {
+  color: var(--marron);
+  font-weight: bold;
+  margin-bottom: 20px;
+  font-family: "Ubuntu", sans-serif;
+  font-style: normal;
+}
+
+/* ===== Estilos dos Inputs ===== */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+label {
+  color: var(--marron);
+  font-weight: bold;
+  margin-bottom: 4px;
+  font-family: "Ubuntu", sans-serif;
+  font-style: normal;
+}
+
+input {
+  width: 60%; /* tamanho fixo */
+  padding: 8px 12px;
+  border: 2px solid var(--marron);
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: rgb(109, 53, 0);
+  color: var(--fundo);
+}
+
+input::placeholder {
+  color: var(--fundo);
+}
+
+form a{
+    color: var(--marron);
+    font-weight: bold;
+    margin-top: 10%;
+    width: 17%;
+}
+
+@media (max-width: 740px) {
+  #container-login {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  border-radius: 20px;
+  padding: 40px;
+}
+
+#container-login img {
+  width: 180px;
+  height: auto;
+  margin-left: 5%;
+}
+
+.login-content {
+  margin-left: 40px;
+  width: 100%;
+}
+
+#container-login h1 {
+  color: var(--marron);
+  font-weight: bold;
+  margin-bottom: 20px;
+  font-family: "Ubuntu", sans-serif;
+  font-style: normal;
+}
+
+/* ===== Estilos dos Inputs ===== */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+label {
+  color: var(--marron);
+  font-weight: bold;
+  margin-bottom: 4px;
+  font-family: "Ubuntu", sans-serif;
+  font-style: normal;
+}
+
+input {
+  width: 80%; /* tamanho fixo */
+  padding: 8px 12px;
+  border: 2px solid var(--marron);
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: rgb(109, 53, 0);
+  color: var(--fundo);
+}
+
+input::placeholder {
+  color: var(--fundo);
+}
+
+form a{
+    color: var(--marron);
+    font-weight: bold;
+    margin-top: 10%;
+    width: 27%;
+}
+}
+
+@media (max-width: 441px) {
+  #container-login {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  border-radius: 20px;
+  padding: 40px;
+}
+
+#container-login img {
+  width: 200px;
+  height: auto;
+  margin-left: 14%;
+  margin-bottom: 100%;
+}
+
+.login-content {
+  margin-left: -220px;
+  margin-top: 300px;
+  width: 100%;
+}
+
+#container-login h1 {
+  color: var(--marron);
+  font-weight: bold;
+  margin-bottom: 20px;
+  font-family: "Ubuntu", sans-serif;
+  font-style: normal;
+}
+
+/* ===== Estilos dos Inputs ===== */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+label {
+  color: var(--marron);
+  font-weight: bold;
+  margin-bottom: 4px;
+  font-family: "Ubuntu", sans-serif;
+  font-style: normal;
+}
+
+input {
+  width: 90%; /* tamanho fixo */
+  padding: 8px 12px;
+  border: 2px solid var(--marron);
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: rgb(109, 53, 0);
+  color: var(--fundo);
+}
+
+input::placeholder {
+  color: var(--fundo);
+}
+
+form a{
+    color: var(--marron);
+    font-weight: bold;
+    margin-top: 10%;
+    width: 27%;
+}
 }
