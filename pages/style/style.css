@@ -1,8 +1,8 @@
-@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Michroma&family=Momo+Trust+Display&family=Oswald:wght@200..700&family=Story+Script&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
 
 * {
-  padding: 0%;
-  margin: 0%;
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
@@ -14,287 +14,130 @@
 
 body {
   background-color: var(--fundo);
+  font-family: "Ubuntu", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
+/* ===== CONTAINER LOGIN ===== */
 #container-login {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 50%;
+  flex-wrap: wrap; /* permite quebrar no celular */
+  background: transparent;
   border-radius: 20px;
-  padding: 40px;
+  padding: 40px 20px;
+  max-width: 900px;
+  width: 90%;
+  text-align: center;
 }
 
 #container-login img {
-  width: 280px;
+  width: 250px;
   height: auto;
-  margin-left: 20%;
+  margin: 0 auto 20px auto;
 }
 
 .login-content {
-  margin-left: 40px;
+  flex: 1;
+  min-width: 280px;
+  text-align: center;
+}
+
+#container-login h1 {
+  color: var(--marron);
+  font-weight: bold;
+  margin-bottom: 25px;
+  font-size: 1.8rem;
+}
+
+/* ===== FORMULÁRIO ===== */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* alinha tudo à esquerda */
+  gap: 5px; /* diminui espaço entre label e input */
   width: 100%;
-}
-
-#container-login h1 {
-  color: var(--marron);
-  font-weight: bold;
-  margin-bottom: 20px;
-  font-family: "Ubuntu", sans-serif;
-  font-style: normal;
-}
-
-/* ===== Estilos dos Inputs ===== */
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+  max-width: 350px;
+  margin: 0 auto; /* centraliza o bloco inteiro */
 }
 
 label {
   color: var(--marron);
   font-weight: bold;
-  margin-bottom: 4px;
-  font-family: "Ubuntu", sans-serif;
-  font-style: normal;
+  margin-bottom: 3px;
+  text-align: left;
 }
 
 input {
-  width: 60%; /* tamanho fixo */
-  padding: 8px 12px;
-  border: 2px solid var(--marron);
-  border-radius: 8px;
-  font-size: 16px;
-  background-color: rgb(109, 53, 0);
-  color: var(--fundo);
-}
-
-input::placeholder {
-  color: var(--fundo);
-}
-
-form a{
-    color: var(--marron);
-    font-weight: bold;
-    margin-top: 10%;
-    width: 17%;
-}
-
-@media (max-width: 740px) {
-  #container-login {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 80%;
-  border-radius: 20px;
-  padding: 40px;
-}
-
-#container-login img {
-  width: 180px;
-  height: auto;
-  margin-left: 5%;
-}
-
-.login-content {
-  margin-left: 40px;
   width: 100%;
-}
-
-#container-login h1 {
-  color: var(--marron);
-  font-weight: bold;
-  margin-bottom: 20px;
-  font-family: "Ubuntu", sans-serif;
-  font-style: normal;
-}
-
-/* ===== Estilos dos Inputs ===== */
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-label {
-  color: var(--marron);
-  font-weight: bold;
-  margin-bottom: 4px;
-  font-family: "Ubuntu", sans-serif;
-  font-style: normal;
-}
-
-input {
-  width: 80%; /* tamanho fixo */
-  padding: 8px 12px;
+  padding: 10px 12px;
   border: 2px solid var(--marron);
   border-radius: 8px;
-  font-size: 16px;
-  background-color: rgb(109, 53, 0);
+  font-size: 15px;
+  background-color: var(--marron);
   color: var(--fundo);
+  outline: none;
+  transition: 0.2s;
 }
 
 input::placeholder {
   color: var(--fundo);
+  opacity: 0.8;
 }
 
-form a{
-    color: var(--marron);
-    font-weight: bold;
-    margin-top: 10%;
-    width: 27%;
-}
+
+input:focus {
+  border-color: var(--laranja);
+  box-shadow: 0 0 5px var(--laranja);
 }
 
-@media (max-width: 441px) {
+form a {
+  color: var(--marron);
+  font-weight: bold;
+  margin-top: 20px;
+  
+  transition: 0.2s;
+}
+
+form a:hover {
+  color: var(--laranja);
+}
+
+/* ===== RESPONSIVIDADE ===== */
+@media (max-width: 768px) {
   #container-login {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 80%;
-  border-radius: 20px;
-  padding: 40px;
+    flex-direction: column;
+    padding: 25px;
+  }
+
+  #container-login img {
+    width: 200px;
+  }
+
+  #container-login h1 {
+    font-size: 1.6rem;
+  }
+
+  input {
+    width: 100%;
+    max-width: 320px;
+  }
 }
 
-#container-login img {
-  width: 200px;
-  height: auto;
-  margin-left: 14%;
-  margin-bottom: 100%;
-}
+@media (max-width: 480px) {
+  #container-login img {
+    width: 160px;
+  }
 
-.login-content {
-  margin-left: -220px;
-  margin-top: 300px;
-  width: 100%;
-}
+  #container-login h1 {
+    font-size: 1.4rem;
+  }
 
-#container-login h1 {
-  color: var(--marron);
-  font-weight: bold;
-  margin-bottom: 20px;
-  font-family: "Ubuntu", sans-serif;
-  font-style: normal;
-}
-
-/* ===== Estilos dos Inputs ===== */
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-label {
-  color: var(--marron);
-  font-weight: bold;
-  margin-bottom: 4px;
-  font-family: "Ubuntu", sans-serif;
-  font-style: normal;
-}
-
-input {
-  width: 90%; /* tamanho fixo */
-  padding: 8px 12px;
-  border: 2px solid var(--marron);
-  border-radius: 8px;
-  font-size: 16px;
-  background-color: rgb(109, 53, 0);
-  color: var(--fundo);
-}
-
-input::placeholder {
-  color: var(--fundo);
-}
-
-form a{
-    color: var(--marron);
-    font-weight: bold;
-    margin-top: 10%;
-    width: 27%;
-}
-}
-
-@media (max-width: 385px) {
-  #container-login {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 80%;
-  border-radius: 20px;
-  padding: 40px;
-}
-
-#container-login img {
-  width: 200px;
-  height: auto;
-  margin-left: 9%;
-  margin-bottom: 300PX;
-}
-
-.login-content {
-  margin-left: -205px;
-  margin-top: 300px;
-  width: 2000px;
-}
-
-#container-login h1 {
-  color: var(--marron);
-  font-size: 30px;
-  font-weight: bold;
-  margin-bottom: 20px;
-  font-family: "Ubuntu", sans-serif;
-  font-style: normal;
-}
-
-/* ===== Estilos dos Inputs ===== */
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-label {
-  color: var(--marron);
-  font-weight: bold;
-  margin-bottom: 4px;
-  font-family: "Ubuntu", sans-serif;
-  font-style: normal;
-}
-
-input {
-  width: 97%; /* tamanho fixo */
-  padding: 8px 12px;
-  border: 2px solid var(--marron);
-  border-radius: 8px;
-  font-size: 16px;
-  background-color: rgb(109, 53, 0);
-  color: var(--fundo);
-}
-
-input::placeholder {
-  color: var(--fundo);
-}
-
-form a{
-    color: var(--marron);
-    font-weight: bold;
-    margin-top: 10%;
-    width: 27%;
-}
+  input {
+    font-size: 14px;
+  }
 }
