@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/pages/style/home.css" />
+    <link rel="stylesheet" href="/pages/style/perfil.css" />
     <title>IF - Lanches</title>
   </head>
   <body>
@@ -27,12 +27,12 @@
       <!-- ===== DIREITA (SALDO E PERFIL) ===== -->
       <div class="navbar-right">
         <span class="saldo">R$ 0,00</span>
-        <a href="/pages/perfil.html"><img
+        <img
           src="/img/perfil-usuario.jpg"
           alt="Foto de Perfil"
           class="perfil"
           onerror="this.onerror=null; this.src='https://cdn-icons-png.flaticon.com/512/847/847969.png';"
-        /></a>
+        />
       </div>
 
       <!-- ===== BOTÃO MENU HAMBÚRGUER ===== -->
@@ -43,7 +43,6 @@
       </div>
     </header>
 
-
     <!-- ===== MENU MOBILE ===== -->
     <div class="mobile-menu" id="mobile-menu">
       <a href="home.html">INÍCIO</a>
@@ -51,11 +50,31 @@
       <a href="gerenciar.html">GERENCIAR</a>
     </div>
 
-    <main>
-      <div id="container-login">
-        <!-- Conteúdo principal -->
+<main>
+  <section class="perfil-card">
+    <div class="perfil-foto">
+      <img
+        id="fotoUsuario"
+        src="/img/perfil-usuario.jpg"
+        alt="Foto do Usuário"
+        onerror="this.src='https://cdn-icons-png.flaticon.com/512/847/847969.png';"
+      />
+      <label for="inputFoto" class="alterar-foto">Alterar Foto</label>
+      <input type="file" id="inputFoto" accept="image/*" hidden />
+    </div>
+
+    <div class="perfil-info">
+      <h1>Seja bem-vindo, <span id="nomeUsuario">Fulano de Tal</span>!</h1>
+      <div class="perfil-selo">Cliente</div>
+
+      <div class="dados-usuario">
+        <p><strong>Nome Completo:</strong> <span id="nomeCompleto">Fulano de Tal</span></p>
+        <p><strong>CPF:</strong> <span id="cpfUsuario">000.000.000-00</span></p>
       </div>
-    </main>
+    </div>
+  </section>
+</main>
+
 
 <script>
   const menuBtn = document.getElementById("menu-btn");

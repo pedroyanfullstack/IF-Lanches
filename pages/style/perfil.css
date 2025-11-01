@@ -21,6 +21,7 @@ body {
   align-items: center;
   overflow-x: hidden;
 }
+
 /* ===== NAVBAR ===== */
 .navbar {
   width: 100%;
@@ -183,8 +184,8 @@ main {
   color: var(--marron);
   font-family: "Archivo Black", sans-serif;
   font-size: 2rem;
-  text-align: center;
-  margin-top: 2%;
+  margin-left: 5%;
+  margin-top: 1%;
   padding-left: 1%;
 }
 
@@ -337,38 +338,102 @@ main {
   }
 }
 
-/* From Uiverse.io by adamgiebl */ 
-button {
-  background: var(--marron);
-  font-family: inherit;
-  padding: 0.6em 1.3em;
-  font-weight: 900;
-  font-size: 18px;
-  color: var(--fundo);
-  border: none;
-  border-radius: 0.4em;
-  box-shadow: 0.1em 0.1em;
+/* ===== PERFIL CARD ===== */
+.perfil-card {
+  width: 90%;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 20px;
+  border: 2px solid var(--marron);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 40px 20px;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.perfil-foto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.perfil-foto img {
+  width: 150px;
+  height: 150px;
+  border-radius: 20%;
+  border: 3px solid var(--marron);
+  object-fit: cover;
+  transition: 0.3s ease;
+}
+
+
+.alterar-foto {
+  margin-top: 10px;
+  background-color: var(--laranja);
+  color: var(--marron);
+  font-weight: bold;
+  padding: 8px 14px;
+  border-radius: 10px;
   cursor: pointer;
+  transition: 0.2s ease;
 }
 
-button:active {
-  transform: translate(0.05em, 0.05em);
-  box-shadow: 0.05em 0.05em;
+.alterar-foto:hover {
+  background-color: var(--marron);
+  color: #fff;
 }
 
-#gerent{
-    margin-left: 3%;
+.perfil-info {
+  text-align: left;
+  flex: 1;
+  min-width: 250px;
 }
 
-#edit{
-    margin-left: 2%;
+.perfil-info h1 {
+  font-family: "Archivo Black", sans-serif;
+  font-size: 1.8rem;
+  color: var(--marron);
 }
 
-/* ===== VARIÁVEIS (caso ainda não tenha no arquivo atual) ===== */
-:root{
-  --sb-track: #f5ebdc;       /* fundo da trilha */
-  --sb-thumb: #502314;       /* cor do polegar */
-  --sb-thumb-hover: #3f1910; /* hover do polegar */
-  --sb-accent: #ffaa00;      /* detalhe / outline */
+.perfil-selo {
+  display: inline-block;
+  margin-top: 5px;
+  background-color: transparent;
+  border: solid 2px var(--laranja);
+  color: var(--marron);
+  font-weight: bold;
+  border-radius: 9px;
+  padding: 5px 15px;
+  font-size: 0.9rem;
 }
 
+.dados-usuario {
+  margin-top: 20px;
+}
+
+.dados-usuario p {
+  font-size: 1.1rem;
+  margin: 8px 0;
+  color: var(--marron);
+}
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 600px) {
+  .perfil-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 25px;
+  }
+
+  .perfil-info h1 {
+    font-size: 1.4rem;
+  }
+
+  .dados-usuario p {
+    font-size: 1rem;
+  }
+}

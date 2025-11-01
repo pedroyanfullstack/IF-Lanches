@@ -188,7 +188,7 @@ main {
   padding-left: 1%;
 }
 
-.h3-secti{
+.h3-secti {
   color: var(--marron);
   font-family: "Archivo Black", sans-serif;
   font-size: 2rem;
@@ -205,7 +205,6 @@ main {
   flex-direction: column;
   gap: 30px;
 }
-
 
 /* ===== RESPONSIVIDADE ===== */
 @media (max-width: 768px) {
@@ -278,6 +277,17 @@ main {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+.card p {
+  font-family: "Archivo Black", sans-serif;
+  color: var(--marron);
+  font-size: 1.1rem;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2%;
+}
+
 /* ===== CARD INTERNO DA IMAGEM ===== */
 .card-imagem {
   background-color: #f5ebdc;
@@ -337,7 +347,7 @@ main {
   }
 }
 
-/* From Uiverse.io by adamgiebl */ 
+/* From Uiverse.io by adamgiebl */
 button {
   background: var(--marron);
   font-family: inherit;
@@ -356,19 +366,62 @@ button:active {
   box-shadow: 0.05em 0.05em;
 }
 
-#gerent{
-    margin-left: 3%;
+#gerent {
+  margin-left: 3%;
 }
 
-#edit{
-    margin-left: 2%;
+#edit {
+  margin-left: 2%;
 }
 
 /* ===== VARIÁVEIS (caso ainda não tenha no arquivo atual) ===== */
-:root{
-  --sb-track: #f5ebdc;       /* fundo da trilha */
-  --sb-thumb: #502314;       /* cor do polegar */
+:root {
+  --sb-track: #f5ebdc; /* fundo da trilha */
+  --sb-thumb: #502314; /* cor do polegar */
   --sb-thumb-hover: #3f1910; /* hover do polegar */
-  --sb-accent: #ffaa00;      /* detalhe / outline */
+  --sb-accent: #ffaa00; /* detalhe / outline */
 }
 
+/* ===== FORMULÁRIO ===== */
+.form-produto {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin: 20px 5%;
+  background-color: #fff;
+  border-radius: 10px;
+  border: 2px solid var(--marron);
+  padding: 20px;
+}
+
+.form-produto input {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid var(--marron);
+  flex: 1 1 200px;
+}
+
+.form-produto button {
+  background-color: var(--laranja);
+  color: var(--marron);
+  border: none;
+  padding: 12px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.form-produto button:hover {
+  background-color: var(--marron);
+  color: #fff;
+}
+
+.form-produto select {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid var(--marron);
+  flex: 1 1 200px;
+  background-color: #fff;
+  cursor: pointer;
+}

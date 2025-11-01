@@ -200,7 +200,7 @@ button:active {
 .navbar-right .perfil {
   height: 40px;
   width: 40px;
-  border-radius: 50%;
+  border-radius: 20%;
   object-fit: cover;
   border: 2px solid var(--marron);
   cursor: pointer;
