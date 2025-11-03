@@ -21,6 +21,7 @@ body {
   align-items: center;
   overflow-x: hidden;
 }
+
 /* ===== NAVBAR ===== */
 .navbar {
   width: 100%;
@@ -116,9 +117,11 @@ body {
 .menu-btn.active span:nth-child(1) {
   transform: rotate(45deg) translate(5px, 5px);
 }
+
 .menu-btn.active span:nth-child(2) {
   opacity: 0;
 }
+
 .menu-btn.active span:nth-child(3) {
   transform: rotate(-45deg) translate(6px, -6px);
 }
@@ -165,7 +168,8 @@ body {
 /* ===== MAIN ===== */
 main {
   width: 100%;
-  padding-top: 110px; /* empurra conteúdo abaixo da navbar */
+  padding-top: 110px;
+  /* empurra conteúdo abaixo da navbar */
   display: flex;
 }
 
@@ -200,7 +204,8 @@ main {
 
 main {
   width: 100%;
-  padding-top: 120px; /* abaixo da navbar */
+  padding-top: 120px;
+  /* abaixo da navbar */
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -248,9 +253,11 @@ main {
     font-size: 1.2rem;
     padding-left: 2%;
   }
+
   #h2-gere {
     font-size: 1.2rem;
   }
+
   .h3-secti {
     font-size: 1.2rem;
     padding-left: 2%;
@@ -345,6 +352,12 @@ main {
     font-size: 1rem;
     min-height: 60px;
   }
+
+  input:not([type="image" i], [type="range" i], [type="checkbox" i], [type="radio" i]) {
+    overflow-clip-margin: 0px !important;
+    overflow: clip !important;
+    width: 20%;
+  }
 }
 
 /* From Uiverse.io by adamgiebl */
@@ -376,10 +389,14 @@ button:active {
 
 /* ===== VARIÁVEIS (caso ainda não tenha no arquivo atual) ===== */
 :root {
-  --sb-track: #f5ebdc; /* fundo da trilha */
-  --sb-thumb: #502314; /* cor do polegar */
-  --sb-thumb-hover: #3f1910; /* hover do polegar */
-  --sb-accent: #ffaa00; /* detalhe / outline */
+  --sb-track: #f5ebdc;
+  /* fundo da trilha */
+  --sb-thumb: #502314;
+  /* cor do polegar */
+  --sb-thumb-hover: #3f1910;
+  /* hover do polegar */
+  --sb-accent: #ffaa00;
+  /* detalhe / outline */
 }
 
 /* ===== FORMULÁRIO ===== */
