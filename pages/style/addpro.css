@@ -405,7 +405,7 @@ button:active {
   flex-wrap: wrap;
   gap: 15px;
   margin: 20px 5%;
-  background-color: #fff;
+  background-color: var(--fundo);
   border-radius: 10px;
   border: 2px solid var(--marron);
   padding: 20px;
@@ -414,8 +414,38 @@ button:active {
 .form-produto input {
   padding: 10px;
   border-radius: 5px;
-  border: 1px solid var(--marron);
+  border: 2px solid var(--marron);
   flex: 1 1 200px;
+  background-color: var(--fundo);
+  color: var(--marron);
+  font-weight: bold;
+}
+
+.form-produto input{
+  padding: 10px;
+  border-radius: 5px;
+  border: 2px solid var(--marron);
+  flex: 1 1 200px;
+  background-color: var(--fundo);
+  color: var(--marron);
+  font-weight: bold;
+}
+
+label {
+    padding: 20px 10px;
+    width: 200px;
+    background-color: #333;
+    color: #FFF;
+    text-transform: uppercase;
+    text-align: center;
+    display: block;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.form-produto input::placeholder{
+  color: var(--marron);
+  font-weight: bold;
 }
 
 .form-produto button {
@@ -437,8 +467,10 @@ button:active {
 .form-produto select {
   padding: 10px;
   border-radius: 5px;
-  border: 1px solid var(--marron);
+  border: 2px solid var(--marron);
   flex: 1 1 200px;
-  background-color: #fff;
+  background-color: var(--fundo);
   cursor: pointer;
+  color: var(--marron);
+  font-weight: bold;
 }
