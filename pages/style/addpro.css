@@ -474,3 +474,27 @@ label {
   color: var(--marron);
   font-weight: bold;
 }
+
+label {
+  color: var(--marron);
+  font-weight: bold;
+  margin-bottom: 3px;
+  text-align: left;
+}
+
+input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 2px solid var(--marron);
+  border-radius: 8px;
+  font-size: 15px;
+  background-color: var(--marron);
+  color: var(--fundo);
+  outline: none;
+  transition: 0.2s;
+}
+
+input::placeholder {
+  color: var(--fundo);
+  opacity: 0.8;
+}

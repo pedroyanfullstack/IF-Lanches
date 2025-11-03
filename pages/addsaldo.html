@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/pages/style/addsaldo.css" />
+    <title>IF - Lanches</title>
+</head>
+
+<body>
+    <header class="navbar">
+        <!-- ===== LOGO ===== -->
+        <div class="navbar-left">
+            <img src="/img/Logoiflanches-removebg-preview.png" alt="Logo IF Lanches" class="logo" />
+        </div>
+
+        <!-- ===== CENTRO (LINKS) ===== -->
+        <nav class="navbar-center">
+            <a href="home.html">INÍCIO</a>
+            <a href="#">CARDÁPIO</a>
+            <a href="gerenciar.html">GERENCIAR</a>
+        </nav>
+
+        <!-- ===== DIREITA (SALDO E PERFIL) ===== -->
+        <div class="navbar-right">
+            <span class="saldo">R$ 0,00</span>
+            <img src="/img/perfil-usuario.jpg" alt="Foto de Perfil" class="perfil"
+                onerror="this.onerror=null; this.src='https://cdn-icons-png.flaticon.com/512/847/847969.png';" />
+        </div>
+
+        <!-- ===== BOTÃO MENU HAMBÚRGUER ===== -->
+        <div class="menu-btn" id="menu-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+
+    <!-- ===== MENU MOBILE ===== -->
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="home.html">INÍCIO</a>
+        <a href="#">CARDÁPIO</a>
+        <a href="gerenciar.html">GERENCIAR</a>
+    </div>
+
+    <main>
+          <input type="text" id="usuario" name="usuario" placeholder="Procurar Usuario" />
+
+        <section class="perfil-card">
+            <div class="perfil-foto">
+                <img id="fotoUsuario" src="/img/perfil-usuario.jpg" alt="Foto do Usuário"
+                    onerror="this.src='https://cdn-icons-png.flaticon.com/512/847/847969.png';" />
+                <label for="inputFoto" class="alterar-foto">Alterar Foto</label>
+                <input type="file" id="inputFoto" accept="image/*" hidden />
+            </div>
+
+            <div class="perfil-info">
+                <h1>Seja bem-vindo, <span id="nomeUsuario">Fulano de Tal</span>!</h1>
+                <div class="perfil-selo">Cliente</div>
+
+                <div class="dados-usuario">
+                    <p><strong>Nome Completo:</strong> <span id="nomeCompleto">Fulano de Tal</span></p>
+                    <p><strong>CPF:</strong> <span id="cpfUsuario">000.000.000-00</span></p>
+                    <label for="inputFoto" class="alterar-foto">Adicionar Saldo</label>
+                    <input type="file" id="inputFoto" accept="image/*" hidden />
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <script>
+        const menuBtn = document.getElementById("menu-btn");
+        const mobileMenu = document.getElementById("mobile-menu");
+
+        menuBtn.addEventListener("click", () => {
+            menuBtn.classList.toggle("active");
+            mobileMenu.classList.toggle("open");
+        });
+
+        // ===== ELEMENTOS DO PERFIL =====
+        const inputFoto = document.getElementById("inputFoto");
+        const fotoUsuario = document.getElementById("fotoUsuario");
+        const nomeUsuario = document.getElementById("nomeUsuario");
+        const nomeCompleto = document.getElementById("nomeCompleto");
+        const cpfUsuario = document.getElementById("cpfUsuario");
+        const navbarPerfil = document.querySelector(".navbar-right .perfil"); // Foto da navbar
+
+        // ===== Carrega dados salvos =====
+        window.addEventListener("DOMContentLoaded", () => {
+            const fotoSalva = localStorage.getItem("fotoUsuario");
+            const nomeSalvo = localStorage.getItem("nomeCompleto");
+            const cpfSalvo = localStorage.getItem("cpfUsuario");
+
+            if (fotoSalva) {
+                if (fotoUsuario) fotoUsuario.src = fotoSalva;
+                if (navbarPerfil) navbarPerfil.src = fotoSalva;
+            }
+
+            if (nomeSalvo) {
+                if (nomeUsuario) nomeUsuario.textContent = nomeSalvo.split(" ")[0];
+                if (nomeCompleto) nomeCompleto.textContent = nomeSalvo;
+            }
+
+            if (cpfSalvo && cpfUsuario) cpfUsuario.textContent = cpfSalvo;
+        });
+
+        // ===== Quando troca a foto =====
+        if (inputFoto) {
+            inputFoto.addEventListener("change", function (event) {
+                const arquivo = event.target.files[0];
+                if (arquivo) {
+                    const leitor = new FileReader();
+                    leitor.onload = function (e) {
+                        const novaFoto = e.target.result;
+                        if (fotoUsuario) fotoUsuario.src = novaFoto;
+                        if (navbarPerfil) navbarPerfil.src = novaFoto;
+                        localStorage.setItem("fotoUsuario", novaFoto);
+                    };
+                    leitor.readAsDataURL(arquivo);
+                }
+            });
+        }
+
+        // ===== Exemplo de como salvar nome/CPF =====
+        function atualizarDados(nome, cpf) {
+            localStorage.setItem("nomeCompleto", nome);
+            localStorage.setItem("cpfUsuario", cpf);
+            if (nomeUsuario) nomeUsuario.textContent = nome.split(" ")[0];
+            if (nomeCompleto) nomeCompleto.textContent = nome;
+            if (cpfUsuario) cpfUsuario.textContent = cpf;
+        }
+
+        // Exemplo de uso (pode apagar depois):
+        // atualizarDados("Pedro Yan de Oliveira Firmino", "123.456.789-00");
+    </script>
+
+</body>
+
+</html>
