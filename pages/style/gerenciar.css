@@ -349,6 +349,7 @@ button {
   border-radius: 0.4em;
   box-shadow: 0.1em 0.1em;
   cursor: pointer;
+  margin-left: 1%;
 }
 
 button:active {
@@ -361,14 +362,6 @@ button:active {
 }
 
 #edit{
-    margin-left: 2%;
-}
-
-/* ===== VARIÁVEIS (caso ainda não tenha no arquivo atual) ===== */
-:root{
-  --sb-track: #f5ebdc;       /* fundo da trilha */
-  --sb-thumb: #502314;       /* cor do polegar */
-  --sb-thumb-hover: #3f1910; /* hover do polegar */
-  --sb-accent: #ffaa00;      /* detalhe / outline */
+    margin-top: 2%;
 }
 
