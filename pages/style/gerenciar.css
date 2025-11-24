@@ -309,6 +309,17 @@ main {
   justify-content: center;
 }
 
+.card p {
+  font-family: "Archivo Black", sans-serif;
+  color: var(--marron);
+  font-size: 1.1rem;
+  background-color: #fff;
+  min-height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* ===== RESPONSIVIDADE ===== */
 @media (max-width: 1024px) {
   .produtos-grid {
@@ -363,5 +374,165 @@ button:active {
 
 #edit{
     margin-top: 2%;
+}
+
+input {
+    width: 40%;
+    padding: 10px 12px;
+    border: 2px solid var(--marron);
+    border-radius: 8px;
+    font-size: 15px;
+    background-color: var(--marron);
+    color: var(--fundo);
+    outline: none;
+    transition: 0.2s;
+}
+
+input .usuario {
+    width: 40%;
+    padding: 10px 12px;
+    border: 2px solid var(--marron);
+    border-radius: 8px;
+    font-size: 15px;
+    background-color: var(--marron);
+    color: var(--fundo);
+    outline: none;
+    transition: 0.2s;
+    margin-left: 30%;
+}
+
+input::placeholder {
+    color: var(--fundo);
+    opacity: 0.8;
+}
+
+/* MODAL CENTRALIZADO */
+dialog {
+    position: fixed;
+    inset: 0;
+    margin: auto;
+    padding: 0;
+    border: none;
+    width: 100%;
+    height: 100%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    z-index: 9999;
+}
+
+dialog[open] {
+    display: flex;
+}
+
+dialog::backdrop {
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(2px);
+}
+
+/* CAIXA DO FORM */
+.form-produto {
+    background: #fff;
+    width: 420px;
+    max-width: 90%;
+    padding: 35px 28px;
+    border-radius: 18px;
+    border: 2px solid var(--marron);
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    position: relative;
+}
+
+/* BOTÃO FECHAR */
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    background: transparent;
+    border: none;
+    font-size: 22px;
+    font-weight: bold;
+    color: var(--marron);
+    cursor: pointer;
+}
+
+.form-produto input {
+    width: 100%;
+}
+
+.form-produto p {
+    text-align: justify;
+  }
+
+  .form-produto svg path{
+    color: var(--marron);
+  }
+
+  .form-produto h1{
+    color: var(--marron);
+  }
+
+.form-produto input::placeholder {
+    color: var(--fundo);
+    opacity: 0.85;
+}
+
+/* FILE INPUT CUSTOMIZADO */
+.file-label {
+    width: 100%;
+    padding: 12px;
+    background: #eee;
+    color: #000;
+    border-radius: 8px;
+    border: 2px solid var(--marron);
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
+    transition: 0.2s;
+}
+
+.file-label:hover {
+    background: var(--laranja);
+    color: var(--marron);
+    font-weight: bold;
+}
+
+/* BOTÃO ADICIONAR PRODUTO */
+.btn-add-prod {
+    width: 100%;
+    padding: 12px;
+    background: var(--laranja);
+    color: var(--marron);
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-add-prod:hover {
+    background: var(--marron);
+    color: #fff;
+}
+
+
+/* BOTÃO ADICIONAR PRODUTO */
+.btn-add-prod {
+    width: 100%;
+    padding: 12px;
+    background: var(--laranja);
+    color: var(--marron);
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-add-prod:hover {
+    background: var(--marron);
+    color: #fff;
 }
 
