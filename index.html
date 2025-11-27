@@ -15,13 +15,14 @@
       <div class="login-content">
         <h1>Faça seu login!</h1>
 
-        <form>
+        <form action="/login" method="POST">
           <label for="usuario">Usuário</label>
           <input
             type="text"
             id="usuario"
             name="usuario"
             placeholder="Digite seu usuário"
+            required
           />
 
           <label for="senha">Senha</label>
@@ -30,9 +31,12 @@
             id="senha"
             name="senha"
             placeholder="Digite sua senha"
+            required
           />
-          <a href="/pages/home.html"><button type="button"onclick="window.location.href='/pages/home.html'">ENTRAR</button></a>
-          <a href="/pages/cadastro.html">Cadastrar</a>
+
+          <button type="submit">ENTRAR</button>
+
+          <a href="/cadastro">Cadastrar</a>
         </form>
       </div>
     </div>

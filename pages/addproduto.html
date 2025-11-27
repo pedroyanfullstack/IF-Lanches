@@ -8,7 +8,6 @@
   </head>
   <body>
     <header class="navbar">
-      <!-- ===== LOGO ===== -->
       <div class="navbar-left">
         <img
           src="/img/Logoiflanches-removebg-preview.png"
@@ -16,48 +15,45 @@
           class="logo"
         />
       </div>
-
-      <!-- ===== CENTRO (LINKS) ===== -->
       <nav class="navbar-center">
-        <a href="home.html">INÍCIO</a>
-        <a href="cardapio.html">CARDÁPIO</a>
-        <a href="gerenciar.html">GERENCIAR</a>
+        <a href="/home">INÍCIO</a>
+        <a href="/cardapio">CARDÁPIO</a>
+        <a href="/gerenciar" class="link-gerenciar">GERENCIAR</a>
       </nav>
-
-      <!-- ===== DIREITA (SALDO E PERFIL) ===== -->
       <div class="navbar-right">
-        <span class="saldo">R$ 0,00</span>
-        <a href="/pages/perfil.html"
+        <span class="saldo">R$ ${usuario.saldo}</span>
+        <a href="/perfil"
           ><img
             src="/img/perfil-usuario.jpg"
             alt="Foto de Perfil"
             class="perfil"
-            onerror="this.onerror=null; this.src='https://cdn-icons-png.flaticon.com/512/847/847969.png';"
+            onerror="this.onerror=null;this.src='https://cdn-icons-png.flaticon.com/512/847/847969.png'"
         /></a>
       </div>
-
-      <!-- ===== BOTÃO MENU HAMBÚRGUER ===== -->
       <div class="menu-btn" id="menu-btn">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
       </div>
     </header>
 
-    <!-- ===== MENU MOBILE ===== -->
     <div class="mobile-menu" id="mobile-menu">
-      <a href="home.html">INÍCIO</a>
-      <a href="#">CARDÁPIO</a>
-      <a href="gerenciar.html">GERENCIAR</a>
+      <a href="/home">INÍCIO</a>
+      <a href="/cardapio">CARDÁPIO</a>
+      <a href="/gerenciar" class="link-gerenciar">GERENCIAR</a>
     </div>
 
     <main>
-      <h1 id="h1-gere">CRIAR PRODUTOS</h1>
-      <h2 id="h2-gere">Adicionar novo produto:</h2>
-      <form id="formProduto" class="form-produto">
+      <h1>CRIAR PRODUTOS</h1>
+      <h2>Adicionar novo produto:</h2>
+      <form id="formProduto">
         <input
           type="text"
           id="nomeProduto"
+          placeholder="Nome do Produto"
+          required
+        />
+        <input
+          type="text"
+          id="descProduto"
           placeholder="Nome do Produto"
           required
         />
@@ -74,170 +70,80 @@
           placeholder="Quantidade"
           required
         />
-
-        <!-- NOVO: Select de Categoria -->
         <select id="categoriaProduto" required>
           <option value="">Selecione a Categoria</option>
           <option value="Salgados">Salgados</option>
           <option value="Bebidas">Bebidas</option>
         </select>
-
-        <input type="file" id="fotoProduto" accept="image/*" required />
         <button type="submit">Adicionar Produto</button>
       </form>
 
-      <h3 class="h3-secti">Salgados</h3>
+      <h3>Salgados</h3>
       <section class="produtos-grid" id="produtosSalgados"></section>
-
-      <h3 class="h3-secti">Bebidas</h3>
+      <h3>Bebidas</h3>
       <section class="produtos-grid" id="produtosBebidas"></section>
     </main>
 
     <script>
       const menuBtn = document.getElementById("menu-btn");
       const mobileMenu = document.getElementById("mobile-menu");
-
       menuBtn.addEventListener("click", () => {
         menuBtn.classList.toggle("active");
         mobileMenu.classList.toggle("open");
       });
 
-      // ===== ELEMENTOS DO PERFIL =====
-      const inputFoto = document.getElementById("inputFoto");
-      const fotoUsuario = document.getElementById("fotoUsuario");
-      const nomeUsuario = document.getElementById("nomeUsuario");
-      const nomeCompleto = document.getElementById("nomeCompleto");
-      const cpfUsuario = document.getElementById("cpfUsuario");
-      const navbarPerfil = document.querySelector(".navbar-right .perfil"); // Foto da navbar
-
-      // ===== Carrega dados salvos =====
-      window.addEventListener("DOMContentLoaded", () => {
-        const fotoSalva = localStorage.getItem("fotoUsuario");
-        const nomeSalvo = localStorage.getItem("nomeCompleto");
-        const cpfSalvo = localStorage.getItem("cpfUsuario");
-
-        if (fotoSalva) {
-          if (fotoUsuario) fotoUsuario.src = fotoSalva;
-          if (navbarPerfil) navbarPerfil.src = fotoSalva;
-        }
-
-        if (nomeSalvo) {
-          if (nomeUsuario) nomeUsuario.textContent = nomeSalvo.split(" ")[0];
-          if (nomeCompleto) nomeCompleto.textContent = nomeSalvo;
-        }
-
-        if (cpfSalvo && cpfUsuario) cpfUsuario.textContent = cpfSalvo;
-      });
-
-      // ===== Quando troca a foto =====
-      if (inputFoto) {
-        inputFoto.addEventListener("change", function (event) {
-          const arquivo = event.target.files[0];
-          if (arquivo) {
-            const leitor = new FileReader();
-            leitor.onload = function (e) {
-              const novaFoto = e.target.result;
-              if (fotoUsuario) fotoUsuario.src = novaFoto;
-              if (navbarPerfil) navbarPerfil.src = novaFoto;
-              localStorage.setItem("fotoUsuario", novaFoto);
-            };
-            leitor.readAsDataURL(arquivo);
-          }
-        });
-      }
-
-      // ===== Exemplo de como salvar nome/CPF =====
-      function atualizarDados(nome, cpf) {
-        localStorage.setItem("nomeCompleto", nome);
-        localStorage.setItem("cpfUsuario", cpf);
-        if (nomeUsuario) nomeUsuario.textContent = nome.split(" ")[0];
-        if (nomeCompleto) nomeCompleto.textContent = nome;
-        if (cpfUsuario) cpfUsuario.textContent = cpf;
-      }
-
-      const produtosGrid = document.getElementById("produtosGrid");
-
       const formProduto = document.getElementById("formProduto");
       const produtosSalgados = document.getElementById("produtosSalgados");
       const produtosBebidas = document.getElementById("produtosBebidas");
+
+      function criarCard(prod) {
+        const card = document.createElement("div");
+        card.classList.add("card");
+        card.innerHTML = `
+      <h3>${prod.nome}</h3>
+      <p>${prod.descricao}</p>
+      <p>Preço: R$ ${Number(prod.preco).toFixed(2)}</p>
+      <p>Qtd: ${prod.quantidade}</p>
+    `;
+        if (prod.categoria === "Salgados") produtosSalgados.appendChild(card);
+        else produtosBebidas.appendChild(card);
+      }
+
+      fetch("/lista/produtos")
+        .then((res) => res.json())
+        .then((lista) => lista.forEach(criarCard))
+        .catch((err) => console.log("Erro ao carregar produtos:", err));
 
       formProduto.addEventListener("submit", function (e) {
         e.preventDefault();
 
         const nome = document.getElementById("nomeProduto").value;
+        const descricao = document.getElementById("descProduto").value;
         const preco = document.getElementById("precoProduto").value;
-        const qtd = document.getElementById("qtdProduto").value;
+        const quantidade = document.getElementById("qtdProduto").value;
         const categoria = document.getElementById("categoriaProduto").value;
-        const fotoInput = document.getElementById("fotoProduto");
-        const arquivo = fotoInput.files[0];
 
-        if (!arquivo || !categoria) return;
-
-        const leitor = new FileReader();
-        leitor.onload = function (e) {
-          const fotoURL = e.target.result;
-
-          // Cria card do produto
-          const card = document.createElement("div");
-          card.classList.add("card");
-
-          card.innerHTML = `
-      <div class="card-imagem">
-        <img src="${fotoURL}" alt="${nome}">
-      </div>
-      <h3>${nome}</h3>
-      <p>Preço: R$ ${parseFloat(preco).toFixed(2)}</p>
-      <p>Qtd: ${qtd}</p>
-    `;
-
-          // Adiciona na seção correta
-          if (categoria === "Salgados") {
-            produtosSalgados.appendChild(card);
-          } else if (categoria === "Bebidas") {
-            produtosBebidas.appendChild(card);
-          }
-
-          // Limpa o formulário
-          formProduto.reset();
+        const produto = {
+          nome,
+          descricao,
+          categoria,
+          quantidade,
+          preco,
         };
 
-        leitor.readAsDataURL(arquivo);
+        fetch("/lista/produtos", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(produto),
+        })
+          .then((res) => res.json())
+          .then(() => {
+            criarCard(produto);
+            formProduto.reset();
+            alert("Produto adicionado com sucesso!");
+          })
+          .catch(() => alert("Erro ao adicionar produto."));
       });
-
-formProduto.addEventListener("submit", function(e) {
-  e.preventDefault();
-
-  const nome = document.getElementById("nomeProduto").value;
-  const preco = parseFloat(document.getElementById("precoProduto").value).toFixed(2);
-  const qtd = document.getElementById("qtdProduto").value;
-  const categoria = document.getElementById("categoriaProduto").value;
-  const fotoInput = document.getElementById("fotoProduto");
-  const arquivo = fotoInput.files[0];
-
-  if (!arquivo || !categoria) return;
-
-  const leitor = new FileReader();
-  leitor.onload = function(e) {
-    const fotoURL = e.target.result;
-
-    // Pega a lista de produtos do localStorage ou cria nova
-    let produtos = JSON.parse(localStorage.getItem("produtos")) || [];
-
-    // Adiciona novo produto
-    produtos.push({ nome, preco, qtd, categoria, fotoURL });
-
-    // Salva novamente no localStorage
-    localStorage.setItem("produtos", JSON.stringify(produtos));
-
-    // Limpa o formulário
-    formProduto.reset();
-
-    alert("Produto adicionado com sucesso!");
-  }
-
-  leitor.readAsDataURL(arquivo);
-});
-
     </script>
   </body>
 </html>

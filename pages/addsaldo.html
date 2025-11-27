@@ -1,155 +1,189 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/pages/style/addsaldo.css" />
     <title>IF - Lanches</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <header class="navbar">
+      <div class="navbar-left">
+        <img
+          src="/img/Logoiflanches-removebg-preview.png"
+          alt="Logo IF Lanches"
+          class="logo"
+        />
+      </div>
 
-        <div class="navbar-left">
-            <img src="/img/Logoiflanches-removebg-preview.png" alt="Logo IF Lanches" class="logo" />
-        </div>
+      <nav class="navbar-center">
+        <a href="/home">INÍCIO</a>
+        <a href="/cardapio">CARDÁPIO</a>
+        <a href="/gerenciar" class="link-gerenciar">GERENCIAR</a>
+      </nav>
 
-        <nav class="navbar-center">
-            <a href="home.html">INÍCIO</a>
-            <a href="cardapio.html">CARDÁPIO</a>
-            <a href="gerenciar.html">GERENCIAR</a>
-        </nav>
+      <div class="navbar-right">
+        <span class="saldo">R$ ${usuario.saldo}</span>
+        <img
+          src="/img/perfil-usuario.jpg"
+          alt="Foto de Perfil"
+          class="perfil"
+          onerror="this.onerror=null; this.src='https://cdn-icons-png.flaticon.com/512/847/847969.png';"
+        />
+      </div>
 
-        <div class="navbar-right">
-            <span class="saldo">R$ 0,00</span>
-            <img src="/img/perfil-usuario.jpg" alt="Foto de Perfil" class="perfil"
-                onerror="this.onerror=null; this.src='https://cdn-icons-png.flaticon.com/512/847/847969.png';" />
-        </div>
-
-        <div class="menu-btn" id="menu-btn">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
+      <div class="menu-btn" id="menu-btn">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </header>
 
     <div class="mobile-menu" id="mobile-menu">
-        <a href="home.html">INÍCIO</a>
-        <a href="#">CARDÁPIO</a>
-        <a href="gerenciar.html">GERENCIAR</a>
+      <a href="/home">INÍCIO</a>
+      <a href="#">CARDÁPIO</a>
+      <a href="gerenciar.html">GERENCIAR</a>
     </div>
 
     <main>
-        <center><input type="text" class="usuario" name="usuario" placeholder="Procurar Usuario" /></center>
-        
+      <center>
+        <input
+          type="text"
+          class="usuario"
+          name="usuario"
+          placeholder="Procurar Usuario"
+        />
+      </center>
 
-        <section class="perfil-card">
-            <div class="perfil-foto">
-                <img id="fotoUsuario" src="/img/perfil-usuario.jpg" alt="Foto do Usuário"
-                    onerror="this.src='https://cdn-icons-png.flaticon.com/512/847/847969.png';" />
-                <label for="inputFoto" class="alterar-foto">Alterar Foto</label>
-                <input type="file" id="inputFoto" accept="image/*" hidden />
-            </div>
+      <section class="perfil-card">
+        <div class="perfil-foto">
+          <img
+            id="fotoUsuario"
+            src="/img/perfil-usuario.jpg"
+            alt="Foto do Usuário"
+            onerror="this.src='https://cdn-icons-png.flaticon.com/512/847/847969.png';"
+          />
+          <label for="inputFoto" class="alterar-foto">Alterar Foto</label>
+          <input type="file" id="inputFoto" accept="image/*" hidden />
+        </div>
 
-            <div class="perfil-info">
-                <h1>Seja bem-vindo, <span id="nomeUsuario">Fulano de Tal</span>!</h1>
-                <div class="perfil-selo">Cliente</div>
+        <div class="perfil-info">
+          <h1>
+            Seja bem-vindo,
+            <span id="nomeUsuario">${usuario.nomePrimeiro}</span>!
+          </h1>
+          <div class="perfil-selo">Cliente</div>
 
-                <div class="dados-usuario">
-                    <p><strong>Nome Completo:</strong> <span id="nomeCompleto">Fulano de Tal</span></p>
-                    <p><strong>Responsavel:</strong> <span id="respUsuario">Fulano de tal</span></p>
-                    <p><strong>CPF:</strong> <span id="cpfUsuario">000.000.000-00</span></p>
-                    <br>
-                </div>
-            </div>
+          <div class="dados-usuario">
+            <p>
+              <strong>Nome Completo:</strong>
+              <span id="nomeCompleto">${usuario.nome}</span>
+            </p>
+            <p>
+              <strong>Responsavel:</strong>
+              <span id="respUsuario">${usuario.responsavel}</span>
+            </p>
+            <p>
+              <strong>CPF:</strong>
+              <span id="cpfUsuario">${usuario.cpf}</span>
+            </p>
+            <p>
+              <strong>Curso:</strong>
+              <span id="curso">${usuario.curso}</span>
+            </p>
 
-            <!-- Botão que abre o modal -->
-            <button class="alterar-saldo" id="btnAbrirModal">ADICIONAR SALDO</button>
-        </section>
+            <br />
+          </div>
+        </div>
+
+        <!-- Botão que abre o modal -->
+        <button class="alterar-saldo" id="btnAbrirModal">
+          ADICIONAR SALDO
+        </button>
+      </section>
     </main>
 
-    <!-- ========== MODAL FORA DE QUALQUER DIV ========== -->
     <dialog id="modalAdd">
+      <form class="form-produto">
+        <button type="button" class="close-modal" onclick="modalAdd.close()">
+          ✕
+        </button>
+        <br />
+        <input type="number" placeholder="Quantidade (R$)" />
 
-        <form class="form-produto">
-            <button type="button" class="close-modal" onclick="modalAdd.close()">✕</button>
-            <br>
-            <input  type="number" placeholder="Quantidade (R$)">
-
-            <button type="submit" class="btn-add-prod">Adicionar Saldo</button>
-        </form>
-
+        <button type="submit" class="btn-add-prod">Adicionar Saldo</button>
+      </form>
     </dialog>
 
-
     <script>
-        // ================= MODAL =================
-        const modalAdd = document.getElementById("modalAdd");
-        const btnAbrirModal = document.getElementById("btnAbrirModal");
 
-        btnAbrirModal.addEventListener("click", () => {
-            modalAdd.showModal();
-        });
+      const modalAdd = document.getElementById("modalAdd");
+      const btnAbrirModal = document.getElementById("btnAbrirModal");
 
-        // ================= MENU =================
-        const menuBtn = document.getElementById("menu-btn");
-        const mobileMenu = document.getElementById("mobile-menu");
+      btnAbrirModal.addEventListener("click", () => {
+        modalAdd.showModal();
+      });
 
-        menuBtn.addEventListener("click", () => {
-            menuBtn.classList.toggle("active");
-            mobileMenu.classList.toggle("open");
-        });
+      const menuBtn = document.getElementById("menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
 
-        // ================= PERFIL =================
-        const inputFoto = document.getElementById("inputFoto");
-        const fotoUsuario = document.getElementById("fotoUsuario");
-        const nomeUsuario = document.getElementById("nomeUsuario");
-        const nomeCompleto = document.getElementById("nomeCompleto");
-        const cpfUsuario = document.getElementById("cpfUsuario");
-        const navbarPerfil = document.querySelector(".navbar-right .perfil");
+      menuBtn.addEventListener("click", () => {
+        menuBtn.classList.toggle("active");
+        mobileMenu.classList.toggle("open");
+      });
 
-        window.addEventListener("DOMContentLoaded", () => {
-            const fotoSalva = localStorage.getItem("fotoUsuario");
-            const nomeSalvo = localStorage.getItem("nomeCompleto");
-            const cpfSalvo = localStorage.getItem("cpfUsuario");
+      let usuarioSelecionadoId = null;
 
-            if (fotoSalva) {
-                fotoUsuario.src = fotoSalva;
-                navbarPerfil.src = fotoSalva;
-            }
-            if (nomeSalvo) {
-                nomeUsuario.textContent = nomeSalvo.split(" ")[0];
-                nomeCompleto.textContent = nomeSalvo;
-            }
-            if (cpfSalvo) cpfUsuario.textContent = cpfSalvo;
-        });
+      const campoBusca = document.querySelector(".usuario");
 
-        if (inputFoto) {
-            inputFoto.addEventListener("change", function (event) {
-                const arquivo = event.target.files[0];
-                if (arquivo) {
-                    const leitor = new FileReader();
-                    leitor.onload = function (e) {
-                        const novaFoto = e.target.result;
-                        fotoUsuario.src = novaFoto;
-                        navbarPerfil.src = novaFoto;
-                        localStorage.setItem("fotoUsuario", novaFoto);
-                    };
-                    leitor.readAsDataURL(arquivo);
-                }
-            });
+      campoBusca.addEventListener("input", async () => {
+        const nome = campoBusca.value.trim();
+        if (nome.length < 2) return;
+
+        try {
+          const resposta = await fetch(
+            `/usuario/buscar?nome=${encodeURIComponent(nome)}`
+          );
+
+          if (!resposta.ok) {
+            console.log("Usuário não encontrado");
+            return;
+          }
+
+          const usuario = await resposta.json();
+
+          usuarioSelecionadoId = usuario.id;
+
+          document.getElementById("nomeUsuario").textContent =
+            usuario.nome_usuario.split(" ")[0];
+          document.getElementById("nomeCompleto").textContent =
+            usuario.nome_usuario;
+          document.getElementById("respUsuario").textContent =
+            usuario.nome_responsavel;
+          document.getElementById("curso").textContent = usuario.curso;
+          document.getElementById("cpfUsuario").textContent = usuario.cpf;
+        } catch (e) {
+          console.log("Erro ao buscar usuário:", e);
         }
+      });
 
-        function atualizarDados(nome, cpf) {
-            localStorage.setItem("nomeCompleto", nome);
-            localStorage.setItem("cpfUsuario", cpf);
-            nomeUsuario.textContent = nome.split(" ")[0];
-            nomeCompleto.textContent = nome;
-            cpfUsuario.textContent = cpf;
-        }
+      document
+        .querySelector(".btn-add-prod")
+        .addEventListener("click", async (e) => {
+          e.preventDefault();
+
+          const valor = document.querySelector("input[type=number]").value;
+
+          const resposta = await fetch("/usuario/addsaldo", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              id_usuario: usuarioSelecionadoId,
+              valor: valor,
+            }),
+          });
+        });
     </script>
-
-</body>
-
+  </body>
 </html>

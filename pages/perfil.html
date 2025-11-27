@@ -19,14 +19,14 @@
 
       <!-- ===== CENTRO (LINKS) ===== -->
       <nav class="navbar-center">
-        <a href="home.html">INÍCIO</a>
-        <a href="#">CARDÁPIO</a>
-        <a href="gerenciar.html">GERENCIAR</a>
+        <a href="/home">INÍCIO</a>
+        <a href="/cardapio">CARDÁPIO</a>
+        <a href="/gerenciar" class="link-gerenciar">GERENCIAR</a>
       </nav>
 
       <!-- ===== DIREITA (SALDO E PERFIL) ===== -->
       <div class="navbar-right">
-        <span class="saldo">R$ 0,00</span>
+        <span class="saldo">R$ ${usuario.saldo}</span>
         <img
           src="/img/perfil-usuario.jpg"
           alt="Foto de Perfil"
@@ -45,102 +45,127 @@
 
     <!-- ===== MENU MOBILE ===== -->
     <div class="mobile-menu" id="mobile-menu">
-      <a href="home.html">INÍCIO</a>
-      <a href="cardapio.html">CARDÁPIO</a>
-      <a href="gerenciar.html">GERENCIAR</a>
+      <a href="/home">INÍCIO</a>
+      <a href="/cardapio">CARDÁPIO</a>
+      <a href="/gerenciar" class="link-gerenciar">GERENCIAR</a>
     </div>
 
-<main>
-  <section class="perfil-card">
-    <div class="perfil-foto">
-      <img
-        id="fotoUsuario"
-        src="/img/perfil-usuario.jpg"
-        alt="Foto do Usuário"
-        onerror="this.src='https://cdn-icons-png.flaticon.com/512/847/847969.png';"
-      />
-      <label for="inputFoto" class="alterar-foto">Alterar Foto</label>
-      <input type="file" id="inputFoto" accept="image/*" hidden />
-    </div>
+    <main>
+      <section class="perfil-card">
+        <div class="perfil-foto">
+          <img
+            id="fotoUsuario"
+            src="/img/perfil-usuario.jpg"
+            alt="Foto do Usuário"
+            onerror="this.src='https://cdn-icons-png.flaticon.com/512/847/847969.png';"
+          />
+          <label for="inputFoto" class="alterar-foto">Alterar Foto</label>
+          <input type="file" id="inputFoto" accept="image/*" hidden />
+        </div>
 
-    <div class="perfil-info">
-      <h1>Seja bem-vindo, <span id="nomeUsuario">Fulano de Tal</span>!</h1>
-      <div class="perfil-selo">Cliente</div>
+        <div class="perfil-info">
+          <h1>
+            Seja bem-vindo,
+            <span id="nomeUsuario">${usuario.nomePrimeiro}</span>!
+          </h1>
+          <div class="perfil-selo">Cliente</div>
 
-      <div class="dados-usuario">
-        <p><strong>Nome Completo:</strong> <span id="nomeCompleto">Fulano de Tal</span></p>
-        <p><strong>CPF:</strong> <span id="cpfUsuario">000.000.000-00</span></p>
-      </div>
-    </div>
-  </section>
-</main>
+          <div class="dados-usuario">
+            <p>
+              <span id="nomeCompleto">${usuario.nome}</span>
+            </p>
+            <p>
+              <strong>CPF:</strong> <span id="cpfUsuario">${usuario.cpf}</span>
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
 
+    <script>
+      const menuBtn = document.getElementById("menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
 
-<script>
-  const menuBtn = document.getElementById("menu-btn");
-  const mobileMenu = document.getElementById("mobile-menu");
+      menuBtn.addEventListener("click", () => {
+        menuBtn.classList.toggle("active");
+        mobileMenu.classList.toggle("open");
+      });
 
-  menuBtn.addEventListener("click", () => {
-    menuBtn.classList.toggle("active");
-    mobileMenu.classList.toggle("open");
-  });
+      const inputFoto = document.getElementById("inputFoto");
+      const fotoUsuario = document.getElementById("fotoUsuario");
+      const nomeUsuario = document.getElementById("nomeUsuario");
+      const nomeCompleto = document.getElementById("nomeCompleto");
+      const cpfUsuario = document.getElementById("cpfUsuario");
+      const navbarPerfil = document.querySelector(".navbar-right .perfil"); 
 
-  // ===== ELEMENTOS DO PERFIL =====
-  const inputFoto = document.getElementById("inputFoto");
-  const fotoUsuario = document.getElementById("fotoUsuario");
-  const nomeUsuario = document.getElementById("nomeUsuario");
-  const nomeCompleto = document.getElementById("nomeCompleto");
-  const cpfUsuario = document.getElementById("cpfUsuario");
-  const navbarPerfil = document.querySelector(".navbar-right .perfil"); // Foto da navbar
+      window.addEventListener("DOMContentLoaded", () => {
+        const fotoSalva = localStorage.getItem("fotoUsuario");
+        const nomeSalvo = localStorage.getItem("nomeCompleto");
+        const cpfSalvo = localStorage.getItem("cpfUsuario");
 
-  // ===== Carrega dados salvos =====
-  window.addEventListener("DOMContentLoaded", () => {
-    const fotoSalva = localStorage.getItem("fotoUsuario");
-    const nomeSalvo = localStorage.getItem("nomeCompleto");
-    const cpfSalvo = localStorage.getItem("cpfUsuario");
+        if (fotoSalva) {
+          if (fotoUsuario) fotoUsuario.src = fotoSalva;
+          if (navbarPerfil) navbarPerfil.src = fotoSalva;
+        }
 
-    if (fotoSalva) {
-      if (fotoUsuario) fotoUsuario.src = fotoSalva;
-      if (navbarPerfil) navbarPerfil.src = fotoSalva;
-    }
+        if (nomeSalvo) {
+          if (nomeUsuario) nomeUsuario.textContent = nomeSalvo.split(" ")[0];
+          if (nomeCompleto) nomeCompleto.textContent = nomeSalvo;
+        }
 
-    if (nomeSalvo) {
-      if (nomeUsuario) nomeUsuario.textContent = nomeSalvo.split(" ")[0];
-      if (nomeCompleto) nomeCompleto.textContent = nomeSalvo;
-    }
+        if (cpfSalvo && cpfUsuario) cpfUsuario.textContent = cpfSalvo;
+      });
 
-    if (cpfSalvo && cpfUsuario) cpfUsuario.textContent = cpfSalvo;
-  });
-
-  // ===== Quando troca a foto =====
-  if (inputFoto) {
-    inputFoto.addEventListener("change", function (event) {
-      const arquivo = event.target.files[0];
-      if (arquivo) {
-        const leitor = new FileReader();
-        leitor.onload = function (e) {
-          const novaFoto = e.target.result;
-          if (fotoUsuario) fotoUsuario.src = novaFoto;
-          if (navbarPerfil) navbarPerfil.src = novaFoto;
-          localStorage.setItem("fotoUsuario", novaFoto);
-        };
-        leitor.readAsDataURL(arquivo);
+      if (inputFoto) {
+        inputFoto.addEventListener("change", function (event) {
+          const arquivo = event.target.files[0];
+          if (arquivo) {
+            const leitor = new FileReader();
+            leitor.onload = function (e) {
+              const novaFoto = e.target.result;
+              if (fotoUsuario) fotoUsuario.src = novaFoto;
+              if (navbarPerfil) navbarPerfil.src = novaFoto;
+              localStorage.setItem("fotoUsuario", novaFoto);
+            };
+            leitor.readAsDataURL(arquivo);
+          }
+        });
       }
-    });
-  }
 
-  // ===== Exemplo de como salvar nome/CPF =====
-  function atualizarDados(nome, cpf) {
-    localStorage.setItem("nomeCompleto", nome);
-    localStorage.setItem("cpfUsuario", cpf);
-    if (nomeUsuario) nomeUsuario.textContent = nome.split(" ")[0];
-    if (nomeCompleto) nomeCompleto.textContent = nome;
-    if (cpfUsuario) cpfUsuario.textContent = cpf;
-  }
+      window.addEventListener("DOMContentLoaded", () => {
+        function getCookie(nome) {
+          return document.cookie
+            .split("; ")
+            .find((c) => c.startsWith(nome + "="))
+            ?.split("=")[1];
+        }
 
-  // Exemplo de uso (pode apagar depois):
-  // atualizarDados("Pedro Yan de Oliveira Firmino", "123.456.789-00");
-</script>
+        const tipo = getCookie("tipoUsuario");
 
+        if (tipo !== "dono" && tipo !== "admin") {
+          document.querySelectorAll(".link-gerenciar").forEach((el) => {
+            el.style.display = "none";
+          });
+        }
+      });
+     async function atualizarSaldoMenu() {
+  const resposta = await fetch("/usuario/saldo");
+  const dados = await resposta.json();
+
+  if (!dados.saldo) return;
+
+  const saldoFormatado = Number(dados.saldo).toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  });
+
+  document.querySelectorAll(".saldo").forEach((span) => {
+    span.textContent = saldoFormatado;
+  });
+}
+
+atualizarSaldoMenu();
+
+    </script>
   </body>
 </html>
