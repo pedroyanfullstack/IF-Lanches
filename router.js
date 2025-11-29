@@ -3,7 +3,7 @@ const path = require("path");
 
 const { loginGET, loginPOST, cadastroGET, cadastroPOST, perfilGET, renderizarPagina, adicionarSaldoPOST, perfilcomum, } = require("./controllers/authController");
 const { verificarAcesso } = require("./controllers/verificarAcesso");
-const { adicionarProdutoPOST, listarProdutosGET, editarProdutoPOST,} = require("./controllers/produtosController");
+const { adicionarProdutoPOST, listarProdutosGET, editarProdutoPOST, excluirProdutoPOST } = require("./controllers/produtosController");
 const { buscarUsuarioPorNome } = require("./controllers/usuariosController");
 const { comprarProdutoPOST } = require("./controllers/compraController");
 const { relatorioGET } = require("./controllers/relatorioController");
@@ -45,6 +45,8 @@ function router(req, res) {
   if (req.method === "POST" && url === "/lista/produtos") return adicionarProdutoPOST(req, res);
   if (req.method === "POST" && url === "/editar/produto") return editarProdutoPOST(req, res);
   if (req.method === "GET" && url === "/relatorio") return verificarAcesso(req, res, () => { return relatorioGET(req, res);});
+  if (req.method === "POST" && url === "/excluir/produto") return excluirProdutoPOST(req, res);
+
 
   if (req.method === "POST" && url === "/comprar") return comprarProdutoPOST(req, res);
 

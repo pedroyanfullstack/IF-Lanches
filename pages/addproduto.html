@@ -111,8 +111,7 @@
 
       fetch("/lista/produtos")
         .then((res) => res.json())
-        .then((lista) => lista.forEach(criarCard))
-        .catch((err) => console.log("Erro ao carregar produtos:", err));
+        .then((lista) => lista.forEach(criarCard));
 
       formProduto.addEventListener("submit", function (e) {
         e.preventDefault();
@@ -140,9 +139,7 @@
           .then(() => {
             criarCard(produto);
             formProduto.reset();
-            alert("Produto adicionado com sucesso!");
-          })
-          .catch(() => alert("Erro ao adicionar produto."));
+          });
       });
     </script>
   </body>

@@ -2,7 +2,7 @@ const bd = require("../bd");
 
 async function adicionarProdutoPOST(req, res) {
   let body = "";
-  req.on("data", chunk => body += chunk);
+  req.on("data", (chunk) => (body += chunk));
 
   req.on("end", async () => {
     const dados = JSON.parse(body);
@@ -37,7 +37,7 @@ async function listarProdutosGET(req, res) {
 
 async function editarProdutoPOST(req, res) {
   let body = "";
-  req.on("data", chunk => body += chunk);
+  req.on("data", (chunk) => (body += chunk));
 
   req.on("end", async () => {
     const dados = JSON.parse(body);
@@ -53,7 +53,7 @@ async function editarProdutoPOST(req, res) {
           dados.categoria,
           dados.quantidade,
           dados.preco,
-          dados.id
+          dados.id,
         ]
       );
 
@@ -67,9 +67,29 @@ async function editarProdutoPOST(req, res) {
   });
 }
 
+async function excluirProdutoPOST(req, res) {
+  let body = "";
+  req.on("data", (chunk) => (body += chunk));
+
+  req.on("end", async () => {
+    const { id } = JSON.parse(body);
+
+    try {
+      await bd.query("DELETE FROM produtos WHERE id = ?", [id]);
+
+      res.writeHead(200, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ ok: true }));
+    } catch (err) {
+      console.log("Erro ao excluir produto:", err);
+      res.writeHead(500);
+      res.end(JSON.stringify({ ok: false }));
+    }
+  });
+}
 
 module.exports = {
   adicionarProdutoPOST,
   listarProdutosGET,
-  editarProdutoPOST
+  editarProdutoPOST,
+  excluirProdutoPOST,
 };

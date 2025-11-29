@@ -19,8 +19,6 @@ function verificarAcesso(req, res, proximo) {
         return res.end();
     }
 
-    console.log(`Usuario encontrado: ${usuario.nome} | Tipo: ${usuario.tipo}`);
-
     if (usuario.tipo !== "dono") {
         res.writeHead(302, { Location: "/home" });
         return res.end();

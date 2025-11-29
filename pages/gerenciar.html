@@ -108,17 +108,17 @@
         card.classList.add("card");
 
         card.innerHTML = `
-            <h3>${prod.nome}</h3>
-            <p>${prod.descricao || ""}</p>
-            <p>Preço: R$ ${Number(prod.preco).toFixed(2)}</p>
-            <p>Qtd: ${prod.quantidade}</p>
-            <br>
-            <button class="btneditar">Editar</button>
-            <br>
-          `;
+    <h3>${prod.nome}</h3>
+    <p>${prod.descricao || ""}</p>
+    <p>Preço: R$ ${Number(prod.preco).toFixed(2)}</p>
+    <p>Qtd: ${prod.quantidade}</p>
+    <br>
+    <button class="btneditar">Editar</button>
+    <button class="btnexcluir" style="background:#b30000;color:white;margin-top:5px;">Excluir</button>
+    <br>
+  `;
 
         card.querySelector(".btneditar").addEventListener("click", () => {
-
           editId.value = prod.id;
           editNome.value = prod.nome;
           editDescricao.value = prod.descricao;
@@ -129,10 +129,21 @@
           modalEditar.showModal();
         });
 
+        card
+          .querySelector(".btnexcluir")
+          .addEventListener("click", async () => {
+            await fetch("/excluir/produto", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ id: prod.id }),
+            });
+
+            location.reload(); 
+          });
+
         if (prod.categoria === "Salgados") produtosSalgados.appendChild(card);
         else produtosBebidas.appendChild(card);
       }
-
 
       fetch("/lista/produtos")
         .then((res) => res.json())
@@ -158,12 +169,8 @@
         })
           .then((res) => res.json())
           .then(() => {
-            alert("Produto atualizado com sucesso!");
             modalEditar.close();
             location.reload();
-          })
-          .catch(() => {
-            alert("Erro ao atualizar produto!");
           });
       });
     </script>
