@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/pages/style/home.css" />
+    <title>IF - Lanches</title>
+  </head>
+
+  <body>
+    <header class="navbar">
+      <div class="navbar-left">
+        <img src="/img/Logoiflanches-removebg-preview.png" alt="Logo IF Lanches" class="logo" />
+      </div>
+
+      <nav class="navbar-center">
+        <a href="/home">INÍCIO</a>
+        <a href="/cardapio">CARDÁPIO</a>
+        <a href="/gerenciar" class="link-gerenciar">GERENCIAR</a>
+      </nav>
+
+      <div class="navbar-right">
+        <span class="saldo">R$ ${usuario.saldo}</span>
+        <a href="/perfil">
+          <img src="/img/perfil-usuario.jpg" alt="Foto de Perfil" class="perfil"
+            onerror="this.onerror=null; this.src='https://cdn-icons-png.flaticon.com/512/847/847969.png';" />
+        </a>
+      </div>
+
+      <div class="menu-btn" id="menu-btn">
+        <span></span><span></span><span></span>
+      </div>
+    </header>
+
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="/home">INÍCIO</a>
+      <a href="/cardapio">CARDÁPIO</a>
+      <a href="/gerenciar" class="link-gerenciar">GERENCIAR</a>
+      <a href="/relatorio" class="link-gerenciar">RELATÓRIO</a>
+    </div>
+
+    <main>
+      <div id="container-login">
+        <h1>RELATÓRIO DE COMPRAS:</h1>
+        <div id="lista-relatorio">
+          ${lista-pedidos}
+        </div>
+      </div>
+    </main>
+
+    <script>
+      const menuBtn = document.getElementById("menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      menuBtn.addEventListener("click", () => {
+        menuBtn.classList.toggle("active");
+        mobileMenu.classList.toggle("open");
+      });
+
+      window.addEventListener("DOMContentLoaded", () => {
+        function getCookie(nome) {
+          return document.cookie
+            .split("; ")
+            .find(c => c.startsWith(nome + "="))
+            ?.split("=")[1];
+        }
+
+        const tipo = getCookie("tipoUsuario");
+
+        if (tipo !== "dono") {
+          document.querySelectorAll(".link-gerenciar").forEach(el => {
+            el.style.display = "none";
+          });
+        }
+      });
+
+      async function atualizarSaldoMenu() {
+        const resposta = await fetch("/usuario/saldo");
+        const dados = await resposta.json();
+
+        if (!dados.saldo) return;
+
+        const saldoFormatado = Number(dados.saldo).toLocaleString("pt-BR", {
+          style: "currency",
+          currency: "BRL"
+        });
+
+        document.querySelectorAll(".saldo").forEach(span => {
+          span.textContent = saldoFormatado;
+        });
+      }
+
+      atualizarSaldoMenu();
+    </script>
+  </body>
+</html>

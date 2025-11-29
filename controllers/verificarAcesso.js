@@ -26,8 +26,6 @@ function verificarAcesso(req, res, proximo) {
         return res.end();
     }
 
-    
-
     req.usuario = usuario; 
     proximo();
 }

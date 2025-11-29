@@ -122,87 +122,121 @@
     </dialog>
 
 <script>
-
-
-      window.addEventListener("DOMContentLoaded", () => {
-        function getCookie(nome) {
-          return document.cookie
-            .split("; ")
-            .find((c) => c.startsWith(nome + "="))
-            ?.split("=")[1];
-        }
-
-        const tipo = getCookie("tipoUsuario");
-
-        if (tipo !== "dono" && tipo !== "admin") {
-          document.querySelectorAll(".link-gerenciar").forEach((el) => {
-            el.style.display = "none";
-          });
-        }
-      });
-
-  const produtosSalgados = document.getElementById("produtosSalgados");
-  const produtosBebidas = document.getElementById("produtosBebidas");
-
-  const modalProduto = document.getElementById("modalProduto");
-  const modalNome = document.getElementById("modalNome");
-  const modalDesc = document.getElementById("modalDesc");
-  const modalPreco = document.getElementById("modalPreco");
-  const modalQtd = document.getElementById("modalQtd");
-
-
-  function criarCard(prod) {
-    const card = document.createElement("div");
-    card.classList.add("card");
-
-    card.innerHTML = `
-      <h3>${prod.nome}</h3>
-      <p>Preço: R$ ${Number(prod.preco).toFixed(2)}</p>
-      <p>Qtd: ${prod.quantidade}</p>
-      <br>
-      <button class="btnVerMais">VER MAIS</button>
-      <br>
-    `;
-
-    card.querySelector(".btnVerMais").addEventListener("click", () => {
-      modalNome.textContent = prod.nome;
-      modalDesc.textContent = prod.descricao || "Sem descrição";
-      modalPreco.textContent = Number(prod.preco).toFixed(2);
-      modalQtd.textContent = prod.quantidade;
-
-      modalProduto.showModal();
-    });
-
-    if (prod.categoria === "Salgados") produtosSalgados.appendChild(card);
-    if (prod.categoria === "Bebidas") produtosBebidas.appendChild(card);
+window.addEventListener("DOMContentLoaded", () => {
+  function getCookie(nome) {
+    return document.cookie
+      .split("; ")
+      .find((c) => c.startsWith(nome + "="))
+      ?.split("=")[1];
   }
 
-  fetch("/lista/produtos")
-    .then(res => res.json())
-    .then(lista => lista.forEach(criarCard))
-    .catch(err => console.log("Erro ao carregar produtos:", err));
-    async function atualizarSaldoMenu() {
-  try {
-    const resposta = await fetch("/usuario/saldo");
-    const dados = await resposta.json();
+  const tipo = getCookie("tipoUsuario");
 
-    if (!dados.saldo) return;
-
-    const saldoFormatado = Number(dados.saldo).toLocaleString("pt-BR", {
-      style: "currency",
-      currency: "BRL"
+  if (tipo !== "dono" && tipo !== "admin") {
+    document.querySelectorAll(".link-gerenciar").forEach((el) => {
+      el.style.display = "none";
     });
-
-    document.querySelectorAll(".saldo").forEach(span => {
-      span.textContent = saldoFormatado;
-    });
-
-  } catch (e) {
-    console.log("Erro ao atualizar saldo:", e);
   }
+});
+
+const produtosSalgados = document.getElementById("produtosSalgados");
+const produtosBebidas = document.getElementById("produtosBebidas");
+
+const modalProduto = document.getElementById("modalProduto");
+const modalAdd2 = document.getElementById("modalAdd2");
+const saldoinsufi = document.getElementById("saldoinsufi");
+
+const modalNome = document.getElementById("modalNome");
+const modalDesc = document.getElementById("modalDesc");
+const modalPreco = document.getElementById("modalPreco");
+const modalQtd = document.getElementById("modalQtd");
+
+function criarCard(prod) {
+  const card = document.createElement("div");
+  card.classList.add("card");
+
+  card.innerHTML = `
+    <h3>${prod.nome}</h3>
+    <p>Preço: R$ ${Number(prod.preco).toFixed(2)}</p>
+    <p>Qtd: ${prod.quantidade}</p>
+    <br>
+    <button class="btnVerMais">VER MAIS</button>
+    <br>
+  `;
+
+  card.querySelector(".btnVerMais").addEventListener("click", () => {
+    modalNome.textContent = prod.nome;
+    modalDesc.textContent = prod.descricao || "Sem descrição";
+    modalPreco.textContent = Number(prod.preco).toFixed(2);
+    modalQtd.textContent = prod.quantidade;
+
+    modalProduto.showModal();
+  });
+
+  if (prod.categoria === "Salgados") produtosSalgados.appendChild(card);
+  if (prod.categoria === "Bebidas") produtosBebidas.appendChild(card);
 }
 
-atualizarSaldoMenu();
+fetch("/lista/produtos")
+  .then(res => res.json())
+  .then(lista => lista.forEach(criarCard));
+
+async function atualizarSaldoMenu() {
+  const resposta = await fetch("/usuario/saldo");
+  const dados = await resposta.json();
+
+  if (!dados.saldo) return;
+
+  const saldoFormatado = Number(dados.saldo).toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL"
+  });
+
+  document.querySelectorAll(".saldo").forEach(span => {
+    span.textContent = saldoFormatado;
+  });
+}
+
+document.querySelector(".btn-add-prod").addEventListener("click", async () => {
+  const nomeProduto = modalNome.textContent;
+  const preco = Number(modalPreco.textContent);
+
+  const resposta = await fetch("/comprar", {
+    method: "POST",
+    credentials: "include",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      produto: nomeProduto,
+      preco
+    })
+  });
+
+  const dados = await resposta.json();
+  modalProduto.close();
+
+  if (dados.erro === "não autenticado") {
+    alert("Sessão expirada. Faça login novamente.");
+    window.location.href = "/login";
+    return;
+  }
+
+  if (!dados.autorizado) {
+    saldoinsufi.showModal();
+    return;
+  }
+
+  modalAdd2.showModal();
+  atualizarSaldoMenu();
+});
+
+// Botões "✕" funcionando
+document.querySelectorAll(".close-modal").forEach(btn => {
+  btn.addEventListener("click", () => {
+    modalProduto.close();
+    modalAdd2.close();
+    saldoinsufi.close();
+  });
+});
 </script>
 
   </body>
